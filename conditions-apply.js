@@ -4,24 +4,20 @@
 //   [5, 6]
 // ];
 
-// const COLLECTION = [1,2]
+// const COLLECTION = [1, 2];
 
-const COLLECTION = ["a", "b", "c", "d"];
+// const COLLECTION = ["a", "b", "c", "d"];
+
+const COLLECTION = ["bla", "bla", "black", "ship"];
 
 const isEqual = function(element1, element2) {
   return JSON.stringify(element1) === JSON.stringify(element2);
 };
 
 const doesIncludes = function(element, matcher) {
-  if (typeof element === "object") {
-    const newElement = JSON.stringify(element);
-    const newMatcher = matcher.map(element => {
-      if (typeof element === "object") return JSON.stringify(element);
-      return element;
-    });
-    return newMatcher.includes(newElement);
-  }
-  return matcher.includes(element);
+  const stringifiedElement = JSON.stringify(element);
+  const stringifiedMatchers = matcher.map(element => JSON.stringify(element));
+  return stringifiedMatchers.includes(stringifiedElement);
 };
 
 const doesIncludesInOrder = function(collection, matcher) {
